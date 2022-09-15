@@ -14,6 +14,21 @@
 
     node ace make:controller [Nome]
 
+### Codigo de uma rota com Controller
+```js
+import Curso from 'App/Models/Curso'
+
+export default class CursosController {
+  index () {
+    return Curso.all()
+  }
+  store ({request}){
+    const dados = request.only(['nome', 'duracao', 'modalidade'])
+    return Curso.create(dados)
+  }
+}
+```
+
 ### Instalando o `lucid` para o baco de dados.
 
     npm i @adonisjs/lucid
@@ -54,6 +69,7 @@ export default class extends BaseSchema {
   }
 }
 ```
+### Codigo de um Model
 
 ```js
 import { DateTime } from 'luxon'
