@@ -6,7 +6,7 @@ export default class Funcionario extends BaseModel {
   public id: number
 
   @column()
-  public conId: number
+  public concessionariaId: number
 
   @column()
   public matricula: string
