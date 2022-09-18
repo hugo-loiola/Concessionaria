@@ -2,18 +2,10 @@ import { DateTime } from 'luxon'
 import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
 
 export default class Concessionaria extends BaseModel {
- @column()
-  public veiculo: number 
 
-  @column()
-  public cliente: number
-
-  @column()
-  public funcionario: number
-
-  @column()
-  public venda: number
-
+  @column({ isPrimary: true })
+  public id: number;
+ 
   @column()
   public cnpj: string
 
@@ -22,6 +14,12 @@ export default class Concessionaria extends BaseModel {
 
   @column()
   public numero: number
+
+  @column()
+  public telefone: string
+
+  @column()
+  public complemento: string
 
   @column()
   public bairro: string
