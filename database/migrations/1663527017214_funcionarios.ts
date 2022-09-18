@@ -16,6 +16,7 @@ export default class extends BaseSchema {
       table.integer('telefone',11)
       table.string('endereco',100)
       table.integer('numero')
+      table.string('complemento',100)
       table.string('bairro',100)
       table.string('cidade',50)
       table.string('uf',2)

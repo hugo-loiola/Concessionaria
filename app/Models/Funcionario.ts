@@ -36,6 +36,9 @@ export default class Funcionario extends BaseModel {
   public numero: number
 
   @column()
+  public complemento: string
+
+  @column()
   public bairro: string
 
   @column()
