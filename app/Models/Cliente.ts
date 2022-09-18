@@ -6,6 +6,9 @@ export default class Cliente extends BaseModel {
   public id: number;
 
   @column()
+  public concessionariaId: number;
+
+  @column()
   public cpf: string;
 
   @column()
