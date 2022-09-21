@@ -6,6 +6,7 @@ export default class extends BaseSchema {
   public async up () {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
+      table.integer('concessionarias_id').unsigned().references('id').inTable('concessionarias').notNullable()
       table.string('matricula',11).notNullable()
       table.string('cpf',11).notNullable()
       table.integer('salario').notNullable()
@@ -15,6 +16,7 @@ export default class extends BaseSchema {
       table.integer('telefone',11)
       table.string('endereco',100)
       table.integer('numero')
+      table.string('complemento',100)
       table.string('bairro',100)
       table.string('cidade',50)
       table.string('uf',2)

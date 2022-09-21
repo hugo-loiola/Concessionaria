@@ -6,6 +6,9 @@ export default class Funcionario extends BaseModel {
   public id: number
 
   @column()
+  public concessionariaId: number
+
+  @column()
   public matricula: string
 
   @column()
@@ -31,6 +34,9 @@ export default class Funcionario extends BaseModel {
 
   @column()
   public numero: number
+
+  @column()
+  public complemento: string
 
   @column()
   public bairro: string
