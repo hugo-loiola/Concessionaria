@@ -1,25 +1,25 @@
-import { DateTime } from 'luxon'
-import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
+import { DateTime } from "luxon";
+import { BaseModel, column } from "@ioc:Adonis/Lucid/Orm";
 
 export default class Venda extends BaseModel {
   @column({ isPrimary: true })
-  public id: number
+  public id: number;
 
   @column()
-  public veiculoId: number
+  public veiculoId: number;
 
   @column()
-  public clienteId: number
+  public clienteId: number;
 
   @column()
-  public funcionarioId: number
+  public funcionarioId: number;
 
   @column()
-  public concessionariaId: number
+  public concessionariaId: number;
 
   @column.dateTime({ autoCreate: true })
-  public createdAt: DateTime
+  public createdAt: DateTime;
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
-  public updatedAt: DateTime
+  public updatedAt: DateTime;
 }
