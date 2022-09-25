@@ -24,7 +24,7 @@ export default class extends BaseSchema {
       table.string("bairro", 100).notNullable();
       table.string("cidade", 100).notNullable();
       table.string("uf", 2).notNullable();
-      table.integer("cep", 7).notNullable();
+      table.integer("cep", 8).notNullable();
 
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL

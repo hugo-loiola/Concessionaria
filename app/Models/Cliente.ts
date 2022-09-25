@@ -45,7 +45,7 @@ export default class Cliente extends BaseModel {
   public uf: string;
 
   @column()
-  public cep: string;
+  public cep: number;
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime;
