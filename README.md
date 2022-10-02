@@ -1,6 +1,5 @@
 # Concessionária
 
-
 ### Iniciar um projeto.
 
     npm init adonis-ts-app@latest [nome]
@@ -14,16 +13,17 @@
     node ace make:controller [Nome]
 
 ### Codigo de uma rota com Controller
+
 ```js
-import Curso from 'App/Models/Curso'
+import Curso from "App/Models/Curso";
 
 export default class CursosController {
-  index () {
-    return Curso.all()
+  index() {
+    return Curso.all();
   }
-  store ({request}){
-    const dados = request.only(['nome', 'duracao', 'modalidade'])
-    return Curso.create(dados)
+  store({ request }) {
+    const dados = request.only(["nome", "duracao", "modalidade"]);
+    return Curso.create(dados);
   }
 }
 ```
@@ -68,6 +68,7 @@ export default class extends BaseSchema {
   }
 }
 ```
+
 ### Codigo de um Model
 
 ```js
@@ -116,28 +117,29 @@ export default class Curso extends BaseModel {
 ## Código de uma seeder
 
 ```ts
-import BaseSeeder from '@ioc:Adonis/Lucid/Seeder'
-import Funcionario from 'App/Models/Funcionario'
+import BaseSeeder from "@ioc:Adonis/Lucid/Seeder";
+import Funcionario from "App/Models/Funcionario";
 
 export default class extends BaseSeeder {
-  public async run () {
+  public async run() {
     await Funcionario.createMany([
       {
-        concessionariaId:1,
-        matricula: '12345',
-        cpf:'001.002.003-04',
+        concessionariaId: 1,
+        matricula: "12345",
+        cpf: "001.002.003-04",
         salario: 2500,
-        nome: 'Hugo',
-        email: 'hugo@gmail.com',
+        nome: "Hugo",
+        email: "hugo@gmail.com",
         idade: 20,
         telefone: 61991862235,
-        endereco: 'QNO 7 Conjunto F',
-      }
-    ])
+        endereco: "QNO 7 Conjunto F",
+      },
+    ]);
     // Write your database queries inside the run method
   }
 }
 ```
+
 ### Rodar uma seeder
 
     node ace db:seed
