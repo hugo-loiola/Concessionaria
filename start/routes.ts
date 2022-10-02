@@ -25,10 +25,14 @@ Route.get("/", async () => {
 });
 
 Route.group(() => {
-  Route.post("/cliente", "");
-  Route.post("/funcionario", "");
-  Route.post("/venda", "");
-  Route.post("/concessionaria", "");
+  Route.post("/cliente_index", "ClientesController.index");
+  Route.post("/cliente_store", "ClientesController.store");
+  Route.post("/funcionario_index", "FuncionariosController.index");
+  Route.post("/funcionario_store", "FuncionariosController.store");
+  Route.post("/venda_index", "VendasController.index");
+  Route.post("/venda_store", "VendasController.store");
+  Route.post("/concessionaria_index", "ConcessionariasController.index");
+  Route.post("/concessionaria_store", "ConcessionariasController.store");
   Route.post("/veiculo", "");
   Route.post("/tipo", "");
   Route.post("/marca", "");
