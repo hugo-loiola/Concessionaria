@@ -1,6 +1,5 @@
 # Concessionária
 
-## Meu estudo sobre `AdonisJS`.
 
 ### Iniciar um projeto.
 
@@ -114,6 +113,31 @@ export default class Curso extends BaseModel {
 
     node ace make:seeder [Nome]
 
+## Código de uma seeder
+
+```ts
+import BaseSeeder from '@ioc:Adonis/Lucid/Seeder'
+import Funcionario from 'App/Models/Funcionario'
+
+export default class extends BaseSeeder {
+  public async run () {
+    await Funcionario.createMany([
+      {
+        concessionariaId:1,
+        matricula: '12345',
+        cpf:'001.002.003-04',
+        salario: 2500,
+        nome: 'Hugo',
+        email: 'hugo@gmail.com',
+        idade: 20,
+        telefone: 61991862235,
+        endereco: 'QNO 7 Conjunto F',
+      }
+    ])
+    // Write your database queries inside the run method
+  }
+}
+```
 ### Rodar uma seeder
 
     node ace db:seed
