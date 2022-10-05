@@ -15,17 +15,65 @@
 
 ### Codigo de uma rota com Controller
 ```js
-import Curso from 'App/Models/Curso'
+// import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
-export default class CursosController {
-  index () {
-    return Curso.all()
+import Aluno from "App/Models/Aluno";
+
+export default class AlunosController {
+  index() {
+    return Aluno.all();
   }
-  store ({request}){
-    const dados = request.only(['nome', 'duracao', 'modalidade'])
-    return Curso.create(dados)
+
+  store({ request }) {
+    const dados = request.only([
+      "nome",
+      "cpf",
+      "matricula",
+      "email",
+      "telefone",
+      "cep",
+      "logradouro",
+      "complemento",
+      "numero",
+      "bairro",
+    ]);
+    return Aluno.create(dados);
+  }
+
+  show({ request }) {
+    const id = request.param("id");
+    return Aluno.findOrFail(id);
+  }
+
+  async destroy({ request }) {
+    const id = request.param("id");
+    const aluno = await Aluno.findOrFail(id);
+    return aluno.delete();
+  }
+
+  async update({ request }) {
+    const id = request.param("id");
+    const aluno = await Aluno.findOrFail(id);
+
+    const dados = request.only([
+      "nome",
+      "cpf",
+      "matricula",
+      "email",
+      "telefone",
+      "cep",
+      "logradouro",
+      "complemento",
+      "numero",
+      "bairro",
+    ]);
+
+    aluno.merge(dados).save();
+
+    return aluno;
   }
 }
+
 ```
 
 ### Instalando o `lucid` para o baco de dados.
