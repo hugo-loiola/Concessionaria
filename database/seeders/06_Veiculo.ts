@@ -1,5 +1,5 @@
-import BaseSeeder from '@ioc:Adonis/Lucid/Seeder'
-import Veiculo from 'App/Models/Veiculo';
+import BaseSeeder from "@ioc:Adonis/Lucid/Seeder";
+import Veiculo from "App/Models/Veiculo";
 
 export default class extends BaseSeeder {
   public async run() {
@@ -10,7 +10,7 @@ export default class extends BaseSeeder {
         marcaId: 1,
         modelo: "Nivus",
         ano: 2022,
-        preco: 140000.00,
+        preco: 140000.0,
         estoque: 25,
         cor: "Cinza Platinum",
         combustivel: "Flex",

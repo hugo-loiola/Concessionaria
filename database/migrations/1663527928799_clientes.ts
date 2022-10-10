@@ -19,12 +19,12 @@ export default class extends BaseSchema {
       table.string("sexo");
       table.string("telefone", 15).notNullable();
       table.string("endereco", 100).notNullable();
-      table.integer("numero", 20).notNullable();
+      table.integer("numero").notNullable();
       table.string("complemento", 100);
       table.string("bairro", 100).notNullable();
       table.string("cidade", 100).notNullable();
       table.string("uf", 2).notNullable();
-      table.integer("cep", 8).notNullable();
+      table.integer("cep").notNullable();
 
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL

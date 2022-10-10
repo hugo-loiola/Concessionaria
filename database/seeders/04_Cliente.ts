@@ -9,7 +9,7 @@ export default class extends BaseSeeder {
         cpf: "05889054104",
         nome: "Diogo Sales",
         email: "diogodobu@gmail.com",
-        dataNascimento: new Date(2003, 08, 10),
+        dataNascimento: new Date(2003, 8, 10),
         sexo: "M",
         telefone: "(61) 984212998",
         endereco: "QR 207 conjunto 06",
