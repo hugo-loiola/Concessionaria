@@ -24,7 +24,7 @@ Route.get("/", async () => {
   return { hello: "world" };
 });
 
-Route.resource("/funcionario", "FuncionariosController");
-Route.resource("/cliente", "ClientesController");
-Route.resource("/concessionaria", "ConcessionariasController");
-Route.resource("/venda", "VendasController");
+Route.resource("/funcionario", "FuncionariosController").apiOnly();
+Route.resource("/cliente", "ClientesController").apiOnly();
+Route.resource("/concessionaria", "ConcessionariasController").apiOnly();
+Route.resource("/venda", "VendasController").apiOnly();
