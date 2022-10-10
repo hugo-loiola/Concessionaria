@@ -28,3 +28,6 @@ Route.resource("/funcionario", "FuncionariosController").apiOnly();
 Route.resource("/cliente", "ClientesController").apiOnly();
 Route.resource("/concessionaria", "ConcessionariasController").apiOnly();
 Route.resource("/venda", "VendasController").apiOnly();
+Route.resource("/veiculo", "VeiculosController").apiOnly();
+Route.resource("/tipo", "TiposController").apiOnly();
+Route.resource("/marca", "MarcasController").apiOnly();
