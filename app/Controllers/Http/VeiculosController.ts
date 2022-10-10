@@ -7,7 +7,6 @@ export default class VeiculosController {
 
   store({ request }) {
     const dados = request.only([
-      "id",
       "concessionariaId",
       "tipoId",
       "marcaId",
@@ -41,7 +40,6 @@ export default class VeiculosController {
     const veiculos = await Veiculo.findOrFail(id);
 
     const dados = request.only([
-      "id",
       "concessionariaId",
       "tipoId",
       "marcaId",
