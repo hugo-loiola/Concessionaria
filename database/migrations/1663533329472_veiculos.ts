@@ -1,5 +1,4 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
-import { NOTADB } from 'sqlite3'
 
 export default class extends BaseSchema {
   protected tableName = 'veiculos'
