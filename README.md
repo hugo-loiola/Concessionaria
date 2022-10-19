@@ -116,6 +116,18 @@ export default class extends BaseSchema {
   }
 }
 ```
+### Exemplo de chave estrangeira
+
+```js
+table
+  .integer("concessionaria_id")
+  .unsigned()
+  .references("id")
+  .inTable("concessionarias")
+  .notNullable();
+}
+```
+
 ### Codigo de um Model
 
 ```js
