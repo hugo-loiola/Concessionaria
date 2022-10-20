@@ -125,7 +125,6 @@ table
   .references("id")
   .inTable("concessionarias")
   .notNullable();
-}
 ```
 
 ### Codigo de um Model
