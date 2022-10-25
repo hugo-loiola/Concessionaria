@@ -3,7 +3,9 @@ import Funcionario from "App/Models/Funcionario";
 export default class FuncionariosController {
   // Ver todos os funcionarios
   async index() {
-    return await Funcionario.all();
+    return await Funcionario.query()
+      .preload("vendas")
+      .preload("concessionaria");
   }
   // Criar um funcionario
   async store({ request }) {

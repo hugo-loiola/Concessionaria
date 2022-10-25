@@ -1,11 +1,13 @@
 import { DateTime } from "luxon";
 import {
   BaseModel,
+  BelongsTo,
+  belongsTo,
   column,
+  hasMany,
+  HasMany,
   HasOne,
   hasOne,
-  ManyToMany,
-  manyToMany,
 } from "@ioc:Adonis/Lucid/Orm";
 import Venda from "./Venda";
 import Concessionaria from "./Concessionaria";
@@ -68,9 +70,9 @@ export default class Funcionario extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime;
 
-  @manyToMany(() => Venda)
-  public vendas: ManyToMany<typeof Venda>;
+  @hasMany(() => Venda)
+  public vendas: HasMany<typeof Venda>;
 
-  @hasOne(() => Concessionaria)
-  public concessionaria: HasOne<typeof Concessionaria>;
+  @belongsTo(() => Concessionaria)
+  public concessionaria: BelongsTo<typeof Concessionaria>;
 }
