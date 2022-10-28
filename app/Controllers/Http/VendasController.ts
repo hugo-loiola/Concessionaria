@@ -1,44 +1,48 @@
 // import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
-import Venda from "App/Models/Venda";
+import Venda from 'App/Models/Venda'
 
 export default class VendasController {
-  index() {
-    return Venda.all();
+  async index() {
+    return await Venda.query()
+      .preload('Veiculo')
+      .preload('cliente')
+      .preload('concessionaria')
+      .preload('funcionario')
   }
-  store({ request }) {
-    const dados = request.only([
-      "veiculoId",
-      "clienteId",
-      "funcionarioId",
-      "concessionariaId",
-    ]);
-    return Venda.create(dados);
+  async store({ request }) {
+    const dados = await request.only([
+      'veiculoId',
+      'clienteId',
+      'funcionarioId',
+      'concessionariaId',
+    ])
+    return await Venda.create(dados)
   }
-  show({ request }) {
-    const id = request.param("id");
-    return Venda.findOrFail(id);
+  async show({ request }) {
+    const id = request.param('id')
+    return await Venda.findOrFail(id)
   }
 
   async destroy({ request }) {
-    const id = request.param("id");
-    const venda = await Venda.findOrFail(id);
-    return venda.delete();
+    const id = request.param('id')
+    const venda = await Venda.findOrFail(id)
+    return venda.delete()
   }
 
   async update({ request }) {
-    const id = request.param("id");
-    const venda = await Venda.findOrFail(id);
+    const id = request.param('id')
+    const venda = await Venda.findOrFail(id)
 
-    const dados = request.only([
-      "veiculoId",
-      "clienteId",
-      "funcionarioId",
-      "concessionariaId",
-    ]);
+    const dados = await request.only([
+      'veiculoId',
+      'clienteId',
+      'funcionarioId',
+      'concessionariaId',
+    ])
 
-    venda.merge(dados).save();
+    venda.merge(dados).save()
 
-    return venda;
+    return venda
   }
 }

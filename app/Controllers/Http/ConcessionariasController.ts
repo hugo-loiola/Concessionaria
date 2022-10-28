@@ -1,54 +1,60 @@
 // import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
-import Concessionaria from "App/Models/Concessionaria";
+import Concessionaria from 'App/Models/Concessionaria'
 
 export default class ConcessionariasController {
-  index() {
-    return Concessionaria.all();
+  async index() {
+    return await Concessionaria.query()
+      .preload('clientes')
+      .preload('funcionarios')
+      .preload('marcas')
+      .preload('tipos')
+      .preload('veiculos')
+      .preload('vendas')
   }
-  store({ request }) {
-    const dados = request.only([
-      "cnpj",
-      "endereco",
-      "numero",
-      "telefone",
-      "complemento",
-      "bairro",
-      "cidade",
-      "uf",
-      "qtdVendas",
-    ]);
-    return Concessionaria.create(dados);
+  async store({ request }) {
+    const dados = await request.only([
+      'cnpj',
+      'endereco',
+      'numero',
+      'telefone',
+      'complemento',
+      'bairro',
+      'cidade',
+      'uf',
+      'qtdVendas',
+    ])
+    return Concessionaria.create(dados)
   }
-  show({ request }) {
-    const id = request.param("id");
-    return Concessionaria.findOrFail(id);
+  async show({ request }) {
+    const id = request.param('id')
+    return await Concessionaria.findOrFail(id)
   }
 
   async destroy({ request }) {
-    const id = request.param("id");
-    const concessionaria = await Concessionaria.findOrFail(id);
-    return concessionaria.delete();
+    const id = request.param('id')
+    const concessionaria = await Concessionaria.findOrFail(id)
+    return concessionaria.delete()
   }
 
   async update({ request }) {
-    const id = request.param("id");
-    const concessionaria = await Concessionaria.findOrFail(id);
+    const id = request.param('id')
+    const concessionaria = await Concessionaria.findOrFail(id)
 
-    const dados = request.only([
-      "cnpj",
-      "endereco",
-      "numero",
-      "telefone",
-      "complemento",
-      "bairro",
-      "cidade",
-      "uf",
-      "qtdVendas",
-    ]);
+    const dados = await request.only([
+      'cnpj',
+      'endereco',
+      'numero',
+      'telefone',
+      'complemento',
+      'bairro',
+      'cidade',
+      'uf',
+      'qtdVendas',
+    ])
 
-    concessionaria.merge(dados).save();
+    concessionaria.merge(dados).save()
 
-    return concessionaria;
+    return concessionaria
   }
 }

@@ -1,40 +1,64 @@
-import { DateTime } from "luxon";
-import { BaseModel, column } from "@ioc:Adonis/Lucid/Orm";
+import { DateTime } from 'luxon'
+import { BaseModel, column, HasMany, hasMany } from '@ioc:Adonis/Lucid/Orm'
+import Cliente from './Cliente'
+import Funcionario from './Funcionario'
+import Marca from './Marca'
+import Tipo from './Tipo'
+import Veiculo from './Veiculo'
+import Venda from './Venda'
 
 export default class Concessionaria extends BaseModel {
   @column({ isPrimary: true })
-  public id: number;
+  public id: number
 
   @column()
-  public cnpj: string;
+  public cnpj: string
 
   @column()
-  public endereco: string;
+  public endereco: string
 
   @column()
-  public numero: number;
+  public numero: number
 
   @column()
-  public telefone: string;
+  public telefone: string
 
   @column()
-  public complemento: string;
+  public complemento: string
 
   @column()
-  public bairro: string;
+  public bairro: string
 
   @column()
-  public cidade: string;
+  public cidade: string
 
   @column()
-  public uf: string;
+  public uf: string
 
   @column()
-  public qtdVendas: number;
+  public qtdVendas: number
 
   @column.dateTime({ autoCreate: true })
-  public createdAt: DateTime;
+  public createdAt: DateTime
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
-  public updatedAt: DateTime;
+  public updatedAt: DateTime
+
+  @hasMany(() => Cliente)
+  public clientes: HasMany<typeof Cliente>
+
+  @hasMany(() => Funcionario)
+  public funcionarios: HasMany<typeof Funcionario>
+
+  @hasMany(() => Marca)
+  public marcas: HasMany<typeof Marca>
+
+  @hasMany(() => Tipo)
+  public tipos: HasMany<typeof Tipo>
+
+  @hasMany(() => Veiculo)
+  public veiculos: HasMany<typeof Veiculo>
+
+  @hasMany(() => Venda)
+  public vendas: HasMany<typeof Venda>
 }
