@@ -121,7 +121,6 @@ export default class Caminhao extends BaseModel {
   @hasMany(() => Carga)
   public carga: HasMany<typeof Carga>;
 }
-}
 ```
 
 ### Rodar as Migration
