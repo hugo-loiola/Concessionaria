@@ -20,18 +20,18 @@ export default class VendasController {
     return await Venda.create(dados)
   }
   async show({ request }) {
-    const id = request.param('id')
+    const id = await request.param('id')
     return await Venda.findOrFail(id)
   }
 
   async destroy({ request }) {
-    const id = request.param('id')
+    const id = await request.param('id')
     const venda = await Venda.findOrFail(id)
     return venda.delete()
   }
 
   async update({ request }) {
-    const id = request.param('id')
+    const id = await request.param('id')
     const venda = await Venda.findOrFail(id)
 
     const dados = await request.only([

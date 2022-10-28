@@ -27,18 +27,18 @@ export default class ConcessionariasController {
     return Concessionaria.create(dados)
   }
   async show({ request }) {
-    const id = request.param('id')
+    const id = await request.param('id')
     return await Concessionaria.findOrFail(id)
   }
 
   async destroy({ request }) {
-    const id = request.param('id')
+    const id = await request.param('id')
     const concessionaria = await Concessionaria.findOrFail(id)
     return concessionaria.delete()
   }
 
   async update({ request }) {
-    const id = request.param('id')
+    const id = await request.param('id')
     const concessionaria = await Concessionaria.findOrFail(id)
 
     const dados = await request.only([
