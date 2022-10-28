@@ -1,65 +1,65 @@
-import Cliente from "App/Models/Cliente";
+import Cliente from 'App/Models/Cliente'
 // import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
 export default class ClientesController {
   index() {
-    return Cliente.all();
+    return Cliente.query().preload('vendas').preload('concessionaria')
   }
 
   store({ request }) {
     const dados = request.only([
-      "concessionariaId",
-      "cpf",
-      "nome",
-      "email",
-      "dataNascimento",
-      "sexo",
-      "telefone",
-      "endereco",
-      "numero",
-      "complemento",
-      "bairro",
-      "cidade",
-      "uf",
-      "cep",
-    ]);
-    return Cliente.create(dados);
+      'concessionariaId',
+      'cpf',
+      'nome',
+      'email',
+      'dataNascimento',
+      'sexo',
+      'telefone',
+      'endereco',
+      'numero',
+      'complemento',
+      'bairro',
+      'cidade',
+      'uf',
+      'cep',
+    ])
+    return Cliente.create(dados)
   }
 
   show({ request }) {
-    const id = request.param("id");
-    return Cliente.findOrFail(id);
+    const id = request.param('id')
+    return Cliente.findOrFail(id)
   }
 
   async destroy({ request }) {
-    const id = request.param("id");
-    const cliente = await Cliente.findOrFail(id);
-    return cliente.delete();
+    const id = request.param('id')
+    const cliente = await Cliente.findOrFail(id)
+    return cliente.delete()
   }
 
   async update({ request }) {
-    const id = request.param("id");
-    const cliente = await Cliente.findOrFail(id);
+    const id = request.param('id')
+    const cliente = await Cliente.findOrFail(id)
 
     const dados = request.only([
-      "concessionariaId",
-      "cpf",
-      "nome",
-      "email",
-      "dataNascimento",
-      "sexo",
-      "telefone",
-      "endereco",
-      "numero",
-      "complemento",
-      "bairro",
-      "cidade",
-      "uf",
-      "cep",
-    ]);
+      'concessionariaId',
+      'cpf',
+      'nome',
+      'email',
+      'dataNascimento',
+      'sexo',
+      'telefone',
+      'endereco',
+      'numero',
+      'complemento',
+      'bairro',
+      'cidade',
+      'uf',
+      'cep',
+    ])
 
-    cliente.merge(dados).save();
+    cliente.merge(dados).save()
 
-    return cliente;
+    return cliente
   }
 }
