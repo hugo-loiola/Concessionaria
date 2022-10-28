@@ -1,55 +1,63 @@
-import { DateTime } from "luxon";
-import { BaseModel, column } from "@ioc:Adonis/Lucid/Orm";
+import { DateTime } from 'luxon'
+import { BaseModel, BelongsTo, belongsTo, column, HasMany, hasMany } from '@ioc:Adonis/Lucid/Orm'
+import Concessionaria from './Concessionaria'
+import Venda from './Venda'
 
 export default class Cliente extends BaseModel {
   @column({ isPrimary: true })
-  public id: number;
+  public id: number
 
   @column()
-  public concessionariaId: number;
+  public concessionariaId: number
 
   @column()
-  public cpf: string;
+  public cpf: string
 
   @column()
-  public nome: string;
+  public nome: string
 
   @column()
-  public email: string;
+  public email: string
 
   @column()
-  public dataNascimento: Date;
+  public dataNascimento: Date
 
   @column()
-  public sexo: string;
+  public sexo: string
 
   @column()
-  public telefone: string;
+  public telefone: string
 
   @column()
-  public endereco: string;
+  public endereco: string
 
   @column()
-  public numero: number;
+  public numero: number
 
   @column()
-  public complemento: string;
+  public complemento: string
 
   @column()
-  public bairro: string;
+  public bairro: string
 
   @column()
-  public cidade: string;
+  public cidade: string
 
   @column()
-  public uf: string;
+  public uf: string
 
   @column()
-  public cep: number;
+  public cep: number
 
   @column.dateTime({ autoCreate: true })
-  public createdAt: DateTime;
+  public createdAt: DateTime
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
-  public updatedAt: DateTime;
+  public updatedAt: DateTime
+
+  @belongsTo(() => Concessionaria)
+  public concessionaria: BelongsTo<typeof Concessionaria>
+
+  @hasMany(() => Venda)
+  public vendas: HasMany<typeof Venda>
 }
