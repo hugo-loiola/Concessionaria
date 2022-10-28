@@ -2,12 +2,12 @@ import Cliente from 'App/Models/Cliente'
 // import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
 export default class ClientesController {
-  index() {
-    return Cliente.query().preload('vendas').preload('concessionaria')
+  async index() {
+    return await Cliente.query().preload('vendas').preload('concessionaria')
   }
 
-  store({ request }) {
-    const dados = request.only([
+  async store({ request }) {
+    const dados = await request.only([
       'concessionariaId',
       'cpf',
       'nome',
@@ -23,25 +23,25 @@ export default class ClientesController {
       'uf',
       'cep',
     ])
-    return Cliente.create(dados)
+    return await Cliente.create(dados)
   }
 
-  show({ request }) {
-    const id = request.param('id')
-    return Cliente.findOrFail(id)
+  async show({ request }) {
+    const id = await request.param('id')
+    return await Cliente.findOrFail(id)
   }
 
   async destroy({ request }) {
-    const id = request.param('id')
+    const id = await request.param('id')
     const cliente = await Cliente.findOrFail(id)
     return cliente.delete()
   }
 
   async update({ request }) {
-    const id = request.param('id')
+    const id = await request.param('id')
     const cliente = await Cliente.findOrFail(id)
 
-    const dados = request.only([
+    const dados = await request.only([
       'concessionariaId',
       'cpf',
       'nome',
