@@ -11,7 +11,12 @@ export default class VendasController {
       .preload('funcionario')
   }
   async store({ request }) {
-    const dados = request.only(['veiculoId', 'clienteId', 'funcionarioId', 'concessionariaId'])
+    const dados = await request.only([
+      'veiculoId',
+      'clienteId',
+      'funcionarioId',
+      'concessionariaId',
+    ])
     return await Venda.create(dados)
   }
   async show({ request }) {
@@ -29,7 +34,12 @@ export default class VendasController {
     const id = request.param('id')
     const venda = await Venda.findOrFail(id)
 
-    const dados = request.only(['veiculoId', 'clienteId', 'funcionarioId', 'concessionariaId'])
+    const dados = await request.only([
+      'veiculoId',
+      'clienteId',
+      'funcionarioId',
+      'concessionariaId',
+    ])
 
     venda.merge(dados).save()
 

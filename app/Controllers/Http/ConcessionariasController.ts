@@ -13,7 +13,7 @@ export default class ConcessionariasController {
       .preload('vendas')
   }
   async store({ request }) {
-    const dados = request.only([
+    const dados = await request.only([
       'cnpj',
       'endereco',
       'numero',
@@ -41,7 +41,7 @@ export default class ConcessionariasController {
     const id = request.param('id')
     const concessionaria = await Concessionaria.findOrFail(id)
 
-    const dados = request.only([
+    const dados = await request.only([
       'cnpj',
       'endereco',
       'numero',
