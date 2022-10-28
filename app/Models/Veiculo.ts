@@ -1,52 +1,71 @@
-import { DateTime } from "luxon";
-import { BaseModel, column } from "@ioc:Adonis/Lucid/Orm";
+import { DateTime } from 'luxon'
+import { BaseModel, BelongsTo, belongsTo, column } from '@ioc:Adonis/Lucid/Orm'
+import Marca from './Marca'
+import Tipo from './Tipo'
+import Venda from './Venda'
+import Concessionaria from './Concessionaria'
 
 export default class Veiculo extends BaseModel {
   @column({ isPrimary: true })
-  public id: number;
+  public id: number
 
   @column()
-  public concessionariaId: number;
+  public concessionariaId: number
 
   @column()
-  public tipoId: number;
+  public tipoId: number
 
   @column()
-  public marcaId: number;
+  public marcaId: number
 
   @column()
-  public modelo: string;
+  public vendaId: number
 
   @column()
-  public ano: number;
+  public modelo: string
 
   @column()
-  public preco: number;
+  public ano: number
 
   @column()
-  public estoque: number;
+  public preco: number
 
   @column()
-  public cor: string;
+  public estoque: number
 
   @column()
-  public combustivel: string;
+  public cor: string
 
   @column()
-  public qtdPassageiros: number;
+  public combustivel: string
 
   @column()
-  public cambio: string;
+  public qtdPassageiros: number
 
   @column()
-  public cilindrada: number;
+  public cambio: string
 
   @column()
-  public potencia: number;
+  public cilindrada: number
+
+  @column()
+  public potencia: number
 
   @column.dateTime({ autoCreate: true })
-  public createdAt: DateTime;
+  public createdAt: DateTime
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
-  public updatedAt: DateTime;
+  public updatedAt: DateTime
+
+  @belongsTo(() => Marca)
+  public marca: BelongsTo<typeof Marca>
+
+  @belongsTo(() => Tipo)
+  public tipo: BelongsTo<typeof Tipo>
+
+  @belongsTo(() => Venda)
+  public venda: BelongsTo<typeof Venda>
+
+  @belongsTo(() => Concessionaria)
+  public concessionaria: BelongsTo<typeof Concessionaria>
 }
