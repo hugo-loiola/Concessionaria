@@ -2,8 +2,6 @@ import { DateTime } from 'luxon'
 import { BaseModel, column, HasMany, hasMany } from '@ioc:Adonis/Lucid/Orm'
 import Cliente from './Cliente'
 import Funcionario from './Funcionario'
-import Marca from './Marca'
-import Tipo from './Tipo'
 import Veiculo from './Veiculo'
 import Venda from './Venda'
 
@@ -49,12 +47,6 @@ export default class Concessionaria extends BaseModel {
 
   @hasMany(() => Funcionario)
   public funcionarios: HasMany<typeof Funcionario>
-
-  @hasMany(() => Marca)
-  public marcas: HasMany<typeof Marca>
-
-  @hasMany(() => Tipo)
-  public tipos: HasMany<typeof Tipo>
 
   @hasMany(() => Veiculo)
   public veiculos: HasMany<typeof Veiculo>

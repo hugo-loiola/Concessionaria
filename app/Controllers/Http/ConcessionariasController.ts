@@ -7,8 +7,6 @@ export default class ConcessionariasController {
     return await Concessionaria.query()
       .preload('clientes')
       .preload('funcionarios')
-      .preload('marcas')
-      .preload('tipos')
       .preload('veiculos')
       .preload('vendas')
   }
