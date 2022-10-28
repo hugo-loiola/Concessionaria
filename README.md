@@ -1,10 +1,9 @@
 # Concessionária
 
-
 ### Iniciar um projeto.
 
     npm init adonis-ts-app@latest [nome]
-    
+
 ### Instalando o `lucid` para o baco de dados.
 
     npm i @adonisjs/lucid
@@ -20,11 +19,11 @@
 ### Criar Model e Migration
 
     node ace make:model [nome] -m
-    
+
 ### Rota
 
 ```ts
-Route.resource("/cursos", "CursosController").apiOnly();
+Route.resource('/cursos', 'CursosController').apiOnly()
 ```
 
 ### Código de uma migration
@@ -55,15 +54,16 @@ export default class extends BaseSchema {
   }
 }
 ```
+
 ### Exemplo de chave estrangeira
 
 ```js
 table
-  .integer("concessionaria_id")
+  .integer('concessionaria_id')
   .unsigned()
-  .references("id")
-  .inTable("concessionarias")
-  .notNullable();
+  .references('id')
+  .inTable('concessionarias')
+  .notNullable()
 ```
 
 ### Codigo de um Model
@@ -118,91 +118,71 @@ import BaseSeeder from '@ioc:Adonis/Lucid/Seeder'
 import Funcionario from 'App/Models/Funcionario'
 
 export default class extends BaseSeeder {
-  public async run () {
+  public async run() {
     await Funcionario.createMany([
       {
-        concessionariaId:1,
+        concessionariaId: 1,
         matricula: '12345',
-        cpf:'001.002.003-04',
+        cpf: '001.002.003-04',
         salario: 2500,
         nome: 'Hugo',
         email: 'hugo@gmail.com',
         idade: 20,
         telefone: 61991862235,
         endereco: 'QNO 7 Conjunto F',
-      }
+      },
     ])
     // Write your database queries inside the run method
   }
 }
 ```
+
 ### Rodar uma seeder
 
     node ace db:seed
-    
+
 ### Criando um Controller.
 
     node ace make:controller [Nome]
 
 ### Codigo de uma rota com Controller
+
 ```js
 // import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
-import Aluno from "App/Models/Aluno";
+import Aluno from 'App/Models/Aluno'
+import AlunoValidator from 'App/Validators/AlunoValidator'
 
 export default class AlunosController {
   index() {
-    return Aluno.all();
+    return Aluno.all()
   }
 
   store({ request }) {
-    const dados = request.only([
-      "nome",
-      "cpf",
-      "matricula",
-      "email",
-      "telefone",
-      "cep",
-      "logradouro",
-      "complemento",
-      "numero",
-      "bairro",
-    ]);
-    return Aluno.create(dados);
+    const dados = await request.validate(AlunoValidator)
+    return Aluno.create(dados)
   }
 
   show({ request }) {
-    const id = request.param("id");
-    return Aluno.findOrFail(id);
+    const id = request.param('id')
+    return Aluno.findOrFail(id)
   }
 
   async destroy({ request }) {
-    const id = request.param("id");
-    const aluno = await Aluno.findOrFail(id);
-    return aluno.delete();
+    const id = request.param('id')
+    const aluno = await Aluno.findOrFail(id)
+    return aluno.delete()
   }
 
   async update({ request }) {
-    const id = request.param("id");
-    const aluno = await Aluno.findOrFail(id);
+    const id = request.param('id')
+    const aluno = await Aluno.findOrFail(id)
 
-    const dados = request.only([
-      "nome",
-      "cpf",
-      "matricula",
-      "email",
-      "telefone",
-      "cep",
-      "logradouro",
-      "complemento",
-      "numero",
-      "bairro",
-    ]);
+    const dados = await request.validate(AlunoValidator)
 
-    aluno.merge(dados).save();
+    aluno.merge(dados).save()
 
-    return aluno;
+    return aluno
   }
 }
-
 ```
