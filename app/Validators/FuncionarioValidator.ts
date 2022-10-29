@@ -76,8 +76,7 @@ export default class FuncionarioValidator {
 
     cep: schema.string.nullableAndOptional([rules.regex(/[0-9]{5}-[\d]{3}/)]),
 
-    qtd_vendas: schema.number()
-  })
+    qtd_vendas: schema.number(),
   })
 
   /**
