@@ -38,7 +38,7 @@ export default class Funcionario extends BaseModel {
   public idade: number
 
   @column()
-  public telefone: number
+  public telefone: string
 
   @column()
   public endereco: string
@@ -59,7 +59,7 @@ export default class Funcionario extends BaseModel {
   public uf: string
 
   @column()
-  public cep: number
+  public cep: string
 
   @column()
   public qtdVendas: number
