@@ -65,10 +65,11 @@ export default class FuncionarioValidator {
   })
 
   public messages: CustomMessages = {
-    'maxLength': 'O máximo de caractéres é de {{ options.maxLength }}.',
+    'maxLength': 'O máximo de caractéres é de {{ options.maxLength }} no campo {{ field }}',
     'minLength': 'O mínimo de caractéres é de {{ options.minLength }}.',
+    'required': 'o campo {{ field }} é obrigatório.',
     'concessionaria_id.unique': 'O id de concessionaria tem que ser único.',
     'cpf.unique': 'o cpf tem que ser único.',
-    'cpf.regex': 'o cpf tem usar o padrão "000.111.222-33"',
+    'cpf.regex': 'o cpf tem usar o padrão 000.111.222-33',
   }
 }
