@@ -4,25 +4,6 @@ import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 export default class FuncionarioValidator {
   constructor(protected ctx: HttpContextContract) {}
 
-  /*
-   * Define schema to validate the "shape", "type", "formatting" and "integrity" of data.
-   *
-   * For example:
-   * 1. The username must be of data type string. But then also, it should
-   *    not contain special characters or numbers.
-   *    ```
-   *     schema.string({}, [ rules.alpha() ])
-   *    ```
-   *
-   * 2. The email must be of data type string, formatted as a valid
-   *    email. But also, not used by any other user.
-   *    ```
-   *     schema.string({}, [
-   *       rules.email(),
-   *       rules.unique({ table: 'users', column: 'email' }),
-   *     ])
-   *    ```
-   */
   public schema = schema.create({
     concessionaria_id: schema.number([
       rules.unique({ table: 'concessionarias', column: 'id' }),
@@ -43,7 +24,11 @@ export default class FuncionarioValidator {
 
     nome: schema.string([rules.alpha({ allow: ['space'] }), rules.maxLength(50)]),
 
-    email: schema.string([rules.email(), rules.maxLength(50)]),
+    email: schema.string([
+      rules.email(),
+      rules.maxLength(50),
+      rules.unique({ table: 'funcionarios', column: 'email' }),
+    ]),
 
     idade: schema.number.nullableAndOptional([rules.range(16, 90)]),
 
@@ -79,17 +64,6 @@ export default class FuncionarioValidator {
     qtd_vendas: schema.number(),
   })
 
-  /**
-   * Custom messages for validation failures. You can make use of dot notation `(.)`
-   * for targeting nested fields and array expressions `(*)` for targeting all
-   * children of an array. For example:
-   *
-   * {
-   *   'profile.username.required': 'Username is required',
-   *   'scores.*.number': 'Define scores as valid numbers'
-   * }
-   *
-   */
   public messages: CustomMessages = {
     'maxLength': 'O máximo de caractéres é de {{ options.maxLength }}',
     'minLength': 'O mínimo de caractéres é de {{ options.minLength }}',
