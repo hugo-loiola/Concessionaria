@@ -24,7 +24,7 @@ export default class FuncionarioValidator {
 
     nome: schema.string([rules.alpha({ allow: ['space'] }), rules.maxLength(50)]),
 
-    email: schema.string([
+    email: schema.string.nullableAndOptional([
       rules.email(),
       rules.maxLength(50),
       rules.unique({ table: 'funcionarios', column: 'email' }),
@@ -65,8 +65,10 @@ export default class FuncionarioValidator {
   })
 
   public messages: CustomMessages = {
-    'maxLength': 'O máximo de caractéres é de {{ options.maxLength }}',
-    'minLength': 'O mínimo de caractéres é de {{ options.minLength }}',
-    'concessionaria_id.unique': 'O id de concessionaria tem que ser único',
+    'maxLength': 'O máximo de caractéres é de {{ options.maxLength }}.',
+    'minLength': 'O mínimo de caractéres é de {{ options.minLength }}.',
+    'concessionaria_id.unique': 'O id de concessionaria tem que ser único.',
+    'cpf.unique': 'o cpf tem que ser único.',
+    'cpf.regex': 'o cpf tem usar o padrão "000.111.222-33"',
   }
 }
