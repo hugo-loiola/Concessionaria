@@ -1,4 +1,4 @@
-import { DateTime } from "luxon";
+import { DateTime } from 'luxon'
 import {
   BaseModel,
   BelongsTo,
@@ -8,71 +8,71 @@ import {
   HasMany,
   HasOne,
   hasOne,
-} from "@ioc:Adonis/Lucid/Orm";
-import Venda from "./Venda";
-import Concessionaria from "./Concessionaria";
+} from '@ioc:Adonis/Lucid/Orm'
+import Venda from './Venda'
+import Concessionaria from './Concessionaria'
 
 export default class Funcionario extends BaseModel {
   @column({ isPrimary: true })
-  public id: number;
+  public id: number
 
   @column()
-  public concessionariaId: number;
+  public concessionariaId: number
 
   @column()
-  public matricula: string;
+  public matricula: string
 
   @column()
-  public cpf: string;
+  public cpf: string
 
   @column()
-  public salario: number;
+  public salario: number
 
   @column()
-  public nome: string;
+  public nome: string
 
   @column()
-  public email: string;
+  public email: string
 
   @column()
-  public idade: number;
+  public idade: number
 
   @column()
-  public telefone: number;
+  public telefone: string
 
   @column()
-  public endereco: string;
+  public endereco: string
 
   @column()
-  public numero: number;
+  public numero: number
 
   @column()
-  public complemento: string;
+  public complemento: string
 
   @column()
-  public bairro: string;
+  public bairro: string
 
   @column()
-  public cidade: string;
+  public cidade: string
 
   @column()
-  public uf: string;
+  public uf: string
 
   @column()
-  public cep: number;
+  public cep: string
 
   @column()
-  public qtdVendas: number;
+  public qtdVendas: number
 
   @column.dateTime({ autoCreate: true })
-  public createdAt: DateTime;
+  public createdAt: DateTime
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
-  public updatedAt: DateTime;
+  public updatedAt: DateTime
 
   @hasMany(() => Venda)
-  public vendas: HasMany<typeof Venda>;
+  public vendas: HasMany<typeof Venda>
 
   @belongsTo(() => Concessionaria)
-  public concessionaria: BelongsTo<typeof Concessionaria>;
+  public concessionaria: BelongsTo<typeof Concessionaria>
 }
