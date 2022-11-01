@@ -71,5 +71,6 @@ export default class FuncionarioValidator {
     'concessionaria_id.unique': 'O id de concessionaria tem que ser único.',
     'cpf.unique': 'o cpf tem que ser único.',
     'cpf.regex': 'o cpf tem usar o padrão 000.111.222-33',
+    'telefone.regex': 'o telefone tem que usar o padrão (11)9999-9999',
   }
 }
