@@ -1,22 +1,14 @@
 // import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
 import Concessionaria from 'App/Models/Concessionaria'
+import ConcessionariaValidator from 'App/Validators/ConcessionariaValidator'
 
 export default class ConcessionariasController {
   index() {
     return Concessionaria.all()
   }
   store({ request }) {
-    const dados = request.only([
-      'cnpj',
-      'endereco',
-      'numero',
-      'telefone',
-      'complemento',
-      'bairro',
-      'cidade',
-      'uf',
-    ])
+    const dados = request.validate(ConcessionariaValidator)
     return Concessionaria.create(dados)
   }
   show({ request }) {
@@ -34,17 +26,7 @@ export default class ConcessionariasController {
     const id = request.param('id')
     const concessionaria = await Concessionaria.findOrFail(id)
 
-    const dados = request.only([
-      'cnpj',
-      'endereco',
-      'numero',
-      'telefone',
-      'complemento',
-      'bairro',
-      'cidade',
-      'uf',
-      'qtdVendas',
-    ])
+    const dados = request.validate(ConcessionariaValidator)
 
     concessionaria.merge(dados).save()
 

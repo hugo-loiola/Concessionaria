@@ -1,44 +1,35 @@
 // import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
-import Venda from "App/Models/Venda";
+import Venda from 'App/Models/Venda'
+import VendaValidator from 'App/Validators/VendaValidator'
 
 export default class VendasController {
   index() {
-    return Venda.all();
+    return Venda.all()
   }
   store({ request }) {
-    const dados = request.only([
-      "veiculoId",
-      "clienteId",
-      "funcionarioId",
-      "concessionariaId",
-    ]);
-    return Venda.create(dados);
+    const dados = request.validate(VendaValidator)
+    return Venda.create(dados)
   }
   show({ request }) {
-    const id = request.param("id");
-    return Venda.findOrFail(id);
+    const id = request.param('id')
+    return Venda.findOrFail(id)
   }
 
   async destroy({ request }) {
-    const id = request.param("id");
-    const venda = await Venda.findOrFail(id);
-    return venda.delete();
+    const id = request.param('id')
+    const venda = await Venda.findOrFail(id)
+    return venda.delete()
   }
 
   async update({ request }) {
-    const id = request.param("id");
-    const venda = await Venda.findOrFail(id);
+    const id = request.param('id')
+    const venda = await Venda.findOrFail(id)
 
-    const dados = request.only([
-      "veiculoId",
-      "clienteId",
-      "funcionarioId",
-      "concessionariaId",
-    ]);
+    const dados = request.validate(VendaValidator)
 
-    venda.merge(dados).save();
+    venda.merge(dados).save()
 
-    return venda;
+    return venda
   }
 }
