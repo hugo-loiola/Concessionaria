@@ -1,5 +1,5 @@
-import BaseSeeder from "@ioc:Adonis/Lucid/Seeder";
-import Veiculo from "App/Models/Veiculo";
+import BaseSeeder from '@ioc:Adonis/Lucid/Seeder'
+import Veiculo from 'App/Models/Veiculo'
 
 export default class extends BaseSeeder {
   public async run() {
@@ -8,16 +8,15 @@ export default class extends BaseSeeder {
         concessionariaId: 1,
         tipoId: 1,
         marcaId: 1,
-        modelo: "Nivus",
+        modelo: 'Nivus',
         ano: 2022,
         preco: 140000.0,
-        estoque: 25,
-        cor: "Cinza Platinum",
-        combustivel: "Flex",
+        cor: 'Cinza Platinum',
+        combustivel: 'Flex',
         qtdPassageiros: 5,
-        cambio: "Automatico",
+        cambio: 'Automatico',
         potencia: 128,
       },
-    ]);
+    ])
   }
 }

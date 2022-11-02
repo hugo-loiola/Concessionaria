@@ -33,9 +33,6 @@ export default class Concessionaria extends BaseModel {
   @column()
   public uf: string
 
-  @column()
-  public qtdVendas: number
-
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
 
