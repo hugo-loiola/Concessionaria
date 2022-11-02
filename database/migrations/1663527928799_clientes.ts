@@ -24,7 +24,7 @@ export default class extends BaseSchema {
       table.string('bairro', 100).notNullable()
       table.string('cidade', 100).notNullable()
       table.string('uf', 2).notNullable()
-      table.integer('cep', 9).notNullable()
+      table.string('cep')
 
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
