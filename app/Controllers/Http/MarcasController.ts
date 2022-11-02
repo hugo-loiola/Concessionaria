@@ -1,4 +1,5 @@
 import Marca from 'App/Models/Marca'
+import MarcaValidator from 'App/Validators/MarcaValidator'
 
 export default class MarcasController {
   async index() {
@@ -6,7 +7,7 @@ export default class MarcasController {
   }
 
   async store({ request }) {
-    const dados = await request.only(['nome'])
+    const dados = await request.validate(MarcaValidator)
     return await Marca.create(dados)
   }
 
@@ -24,7 +25,7 @@ export default class MarcasController {
   async update({ request }) {
     const id = await request.param('id')
     const marca = await Marca.findOrFail(id)
-    const dados = await request.only(['nome'])
+    const dados = await request.validate(MarcaValidator)
     marca.merge(dados).save()
 
     return marca

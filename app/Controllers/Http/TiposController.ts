@@ -1,4 +1,5 @@
 import Tipo from 'App/Models/Tipo'
+import TipoValidator from 'App/Validators/TipoValidator'
 
 export default class TiposController {
   async index() {
@@ -6,7 +7,7 @@ export default class TiposController {
   }
 
   async store({ request }) {
-    const dados = await request.only(['nome'])
+    const dados = await request.validate(TipoValidator)
     return await Tipo.create(dados)
   }
 
@@ -25,7 +26,7 @@ export default class TiposController {
     const id = await request.param('id')
     const tipo = await Tipo.findOrFail(id)
 
-    const dados = await request.only(['nome'])
+    const dados = await request.validate(TipoValidator)
 
     tipo.merge(dados).save()
 

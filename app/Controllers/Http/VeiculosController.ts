@@ -1,4 +1,5 @@
 import Veiculo from 'App/Models/Veiculo'
+import VeiculoValidator from 'App/Validators/VeiculoValidator'
 
 export default class VeiculosController {
   async index() {
@@ -10,21 +11,7 @@ export default class VeiculosController {
   }
 
   async store({ request }) {
-    const dados = await request.only([
-      'concessionariaId',
-      'tipoId',
-      'marcaId',
-      'modelo',
-      'ano',
-      'preco',
-      'estoque',
-      'cor',
-      'combustivel',
-      'qtdPassageiros',
-      'cambio',
-      'cilindrada',
-      'potencia',
-    ])
+    const dados = await request.validate(VeiculoValidator)
     return await Veiculo.create(dados)
   }
 
@@ -42,23 +29,7 @@ export default class VeiculosController {
   async update({ request }) {
     const id = await request.param('id')
     const veiculos = await Veiculo.findOrFail(id)
-
-    const dados = await request.only([
-      'concessionariaId',
-      'tipoId',
-      'marcaId',
-      'modelo',
-      'ano',
-      'preco',
-      'estoque',
-      'cor',
-      'combustivel',
-      'qtdPassageiros',
-      'cambio',
-      'cilindrada',
-      'potencia',
-    ])
-
+    const dados = await request.validate(VeiculoValidator)
     veiculos.merge(dados).save()
 
     return veiculos

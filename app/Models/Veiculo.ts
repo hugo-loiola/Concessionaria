@@ -31,9 +31,6 @@ export default class Veiculo extends BaseModel {
   public preco: number
 
   @column()
-  public estoque: number
-
-  @column()
   public cor: string
 
   @column()

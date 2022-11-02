@@ -20,7 +20,6 @@ export default class extends BaseSchema {
       table.string('modelo', 50).notNullable()
       table.integer('ano', 4).notNullable()
       table.decimal('preco').notNullable()
-      table.integer('estoque').notNullable()
       table.string('cor').notNullable()
       table.string('combustivel').notNullable()
       table.integer('qtd_passageiros')
