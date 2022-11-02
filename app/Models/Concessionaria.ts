@@ -1,40 +1,37 @@
-import { DateTime } from "luxon";
-import { BaseModel, column } from "@ioc:Adonis/Lucid/Orm";
+import { DateTime } from 'luxon'
+import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
 
 export default class Concessionaria extends BaseModel {
   @column({ isPrimary: true })
-  public id: number;
+  public id: number
 
   @column()
-  public cnpj: string;
+  public cnpj: string
 
   @column()
-  public endereco: string;
+  public endereco: string
 
   @column()
-  public numero: number;
+  public numero: number
 
   @column()
-  public telefone: string;
+  public telefone: string
 
   @column()
-  public complemento: string;
+  public complemento: string
 
   @column()
-  public bairro: string;
+  public bairro: string
 
   @column()
-  public cidade: string;
+  public cidade: string
 
   @column()
-  public uf: string;
-
-  @column()
-  public qtdVendas: number;
+  public uf: string
 
   @column.dateTime({ autoCreate: true })
-  public createdAt: DateTime;
+  public createdAt: DateTime
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
-  public updatedAt: DateTime;
+  public updatedAt: DateTime
 }

@@ -1,54 +1,53 @@
 // import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
-import Concessionaria from "App/Models/Concessionaria";
+import Concessionaria from 'App/Models/Concessionaria'
 
 export default class ConcessionariasController {
   index() {
-    return Concessionaria.all();
+    return Concessionaria.all()
   }
   store({ request }) {
     const dados = request.only([
-      "cnpj",
-      "endereco",
-      "numero",
-      "telefone",
-      "complemento",
-      "bairro",
-      "cidade",
-      "uf",
-      "qtdVendas",
-    ]);
-    return Concessionaria.create(dados);
+      'cnpj',
+      'endereco',
+      'numero',
+      'telefone',
+      'complemento',
+      'bairro',
+      'cidade',
+      'uf',
+    ])
+    return Concessionaria.create(dados)
   }
   show({ request }) {
-    const id = request.param("id");
-    return Concessionaria.findOrFail(id);
+    const id = request.param('id')
+    return Concessionaria.findOrFail(id)
   }
 
   async destroy({ request }) {
-    const id = request.param("id");
-    const concessionaria = await Concessionaria.findOrFail(id);
-    return concessionaria.delete();
+    const id = request.param('id')
+    const concessionaria = await Concessionaria.findOrFail(id)
+    return concessionaria.delete()
   }
 
   async update({ request }) {
-    const id = request.param("id");
-    const concessionaria = await Concessionaria.findOrFail(id);
+    const id = request.param('id')
+    const concessionaria = await Concessionaria.findOrFail(id)
 
     const dados = request.only([
-      "cnpj",
-      "endereco",
-      "numero",
-      "telefone",
-      "complemento",
-      "bairro",
-      "cidade",
-      "uf",
-      "qtdVendas",
-    ]);
+      'cnpj',
+      'endereco',
+      'numero',
+      'telefone',
+      'complemento',
+      'bairro',
+      'cidade',
+      'uf',
+      'qtdVendas',
+    ])
 
-    concessionaria.merge(dados).save();
+    concessionaria.merge(dados).save()
 
-    return concessionaria;
+    return concessionaria
   }
 }
