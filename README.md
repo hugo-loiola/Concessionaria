@@ -279,3 +279,11 @@ export default class AlunoValidator {
   public messages: CustomMessages = {};
 }
 ```
+
+### Instalando Autentificador
+
+    npm i @adonisjs/auth
+
+### Configurando Autentificador
+    
+    npm ace configure @adonisjs/auth
