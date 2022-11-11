@@ -5,7 +5,7 @@ export default class FuncionarioValidator {
   constructor(protected ctx: HttpContextContract) {}
 
   public schema = schema.create({
-    concessionaria_id: schema.number([
+    concessionariaId: schema.number([
       rules.unique({ table: 'concessionarias', column: 'id' }),
       rules.exists({ table: 'concessionarias', column: 'id' }),
     ]),
@@ -61,7 +61,7 @@ export default class FuncionarioValidator {
 
     cep: schema.string.nullableAndOptional([rules.regex(/[0-9]{5}-[\d]{3}/)]),
 
-    qtd_vendas: schema.number(),
+    qtdVendas: schema.number(),
   })
 
   public messages: CustomMessages = {
