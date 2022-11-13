@@ -1,6 +1,7 @@
 // import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
 import Concessionaria from 'App/Models/Concessionaria'
+import ConcessionariaUpdateValidator from 'App/Validators/ConcessionariaUpdateValidator'
 import ConcessonariaValidator from 'App/Validators/ConcessonariaValidator'
 
 export default class ConcessionariasController {
@@ -31,7 +32,7 @@ export default class ConcessionariasController {
     const id = await request.param('id')
     const concessionaria = await Concessionaria.findOrFail(id)
 
-    const dados = await request.validate(ConcessonariaValidator)
+    const dados = await request.validate(ConcessionariaUpdateValidator)
 
     concessionaria.merge(dados).save()
 

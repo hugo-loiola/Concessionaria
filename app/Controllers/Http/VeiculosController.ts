@@ -1,4 +1,5 @@
 import Veiculo from 'App/Models/Veiculo'
+import VeiculoUpdateValidator from 'App/Validators/VeiculoUpdateValidator'
 import VeiculoValidator from 'App/Validators/VeiculoValidator'
 
 export default class VeiculosController {
@@ -29,7 +30,7 @@ export default class VeiculosController {
   async update({ request }) {
     const id = await request.param('id')
     const veiculos = await Veiculo.findOrFail(id)
-    const dados = await request.validate(VeiculoValidator)
+    const dados = await request.validate(VeiculoUpdateValidator)
     veiculos.merge(dados).save()
 
     return veiculos

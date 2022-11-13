@@ -1,4 +1,5 @@
 import Funcionario from 'App/Models/Funcionario'
+import FuncionarioUpdateValidator from 'App/Validators/FuncionarioUpdateValidator'
 import FuncionarioValidator from 'App/Validators/FuncionarioValidator'
 
 export default class FuncionariosController {
@@ -27,7 +28,7 @@ export default class FuncionariosController {
   async update({ request }) {
     const id = request.param('id')
     const funcionario = await Funcionario.findOrFail(id)
-    const dados = await request.validate(FuncionarioValidator)
+    const dados = await request.validate(FuncionarioUpdateValidator)
 
     funcionario.merge(dados)
 

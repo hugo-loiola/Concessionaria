@@ -1,6 +1,7 @@
 // import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
 import Venda from 'App/Models/Venda'
+import VendaUpdateValidator from 'App/Validators/VendaUpdateValidator'
 import VendaValidator from 'App/Validators/VendaValidator'
 
 export default class VendasController {
@@ -30,7 +31,7 @@ export default class VendasController {
     const id = await request.param('id')
     const venda = await Venda.findOrFail(id)
 
-    const dados = await request.validate(VendaValidator)
+    const dados = await request.validate(VendaUpdateValidator)
 
     venda.merge(dados).save()
 
