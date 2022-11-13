@@ -16,5 +16,5 @@ export default class Marca extends BaseModel {
   public updatedAt: DateTime
 
   @hasMany(() => Veiculo)
-  public veiculo: HasMany<typeof Veiculo>
+  public veiculos: HasMany<typeof Veiculo>
 }

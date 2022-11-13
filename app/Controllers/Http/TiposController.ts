@@ -3,7 +3,7 @@ import TipoValidator from 'App/Validators/TipoValidator'
 
 export default class TiposController {
   async index() {
-    return await Tipo.query().preload('veiculo')
+    return await Tipo.query().preload('veiculos')
   }
 
   async store({ request }) {

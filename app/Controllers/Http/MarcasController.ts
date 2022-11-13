@@ -3,7 +3,7 @@ import MarcaValidator from 'App/Validators/MarcaValidator'
 
 export default class MarcasController {
   async index() {
-    return await Marca.query().preload('veiculo')
+    return await Marca.query().preload('veiculos')
   }
 
   async store({ request }) {
