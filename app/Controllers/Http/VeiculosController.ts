@@ -24,7 +24,8 @@ export default class VeiculosController {
   async destroy({ request }) {
     const id = await request.param('id')
     const veiculos = await Veiculo.findOrFail(id)
-    return veiculos.delete()
+    veiculos.delete()
+    return 'Veiculo deletado com sucesso!'
   }
 
   async update({ request }) {

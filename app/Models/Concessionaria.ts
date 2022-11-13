@@ -10,6 +10,9 @@ export default class Concessionaria extends BaseModel {
   public id: number
 
   @column()
+  public nome: string
+
+  @column()
   public cnpj: string
 
   @column()

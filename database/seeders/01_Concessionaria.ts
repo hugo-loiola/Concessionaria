@@ -5,6 +5,7 @@ export default class extends BaseSeeder {
   public async run() {
     await Concessionaria.createMany([
       {
+        nome: 'Concessionária Águas Claras',
         cnpj: '73.925.034/0001-16',
         endereco: 'Rua 12 cj C lote 12',
         numero: 12,

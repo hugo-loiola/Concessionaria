@@ -52,9 +52,6 @@ export default class Funcionario extends BaseModel {
   @column()
   public cep: string
 
-  @column()
-  public qtdVendas: number
-
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
 
