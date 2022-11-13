@@ -8,6 +8,7 @@ export default class extends BaseSeeder {
         concessionariaId: 1,
         tipoId: 1,
         marcaId: 1,
+        vendaId: 1,
         modelo: 'Nivus',
         ano: 2022,
         preco: 140000.0,

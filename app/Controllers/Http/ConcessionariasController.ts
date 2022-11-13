@@ -7,8 +7,8 @@ import ConcessonariaValidator from 'App/Validators/ConcessonariaValidator'
 export default class ConcessionariasController {
   async index() {
     return await Concessionaria.query()
-      .preload('clientes')
       .preload('funcionarios')
+      .preload('clientes')
       .preload('veiculos')
       .preload('vendas')
   }

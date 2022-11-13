@@ -7,10 +7,10 @@ import VendaValidator from 'App/Validators/VendaValidator'
 export default class VendasController {
   async index() {
     return await Venda.query()
-      .preload('Veiculo')
       .preload('cliente')
       .preload('concessionaria')
       .preload('funcionario')
+      .preload('Veiculos')
   }
   async store({ request }) {
     const dados = await request.validate(VendaValidator)

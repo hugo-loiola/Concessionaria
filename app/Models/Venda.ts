@@ -1,5 +1,5 @@
 import { DateTime } from 'luxon'
-import { BaseModel, BelongsTo, belongsTo, column } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, BelongsTo, belongsTo, column, HasMany, hasMany } from '@ioc:Adonis/Lucid/Orm'
 import Cliente from './Cliente'
 import Concessionaria from './Concessionaria'
 import Funcionario from './Funcionario'
@@ -8,9 +8,6 @@ import Veiculo from './Veiculo'
 export default class Venda extends BaseModel {
   @column({ isPrimary: true })
   public id: number
-
-  @column()
-  public veiculoId: number
 
   @column()
   public clienteId: number
@@ -36,6 +33,6 @@ export default class Venda extends BaseModel {
   @belongsTo(() => Concessionaria)
   public concessionaria: BelongsTo<typeof Concessionaria>
 
-  @belongsTo(() => Veiculo)
-  public Veiculo: BelongsTo<typeof Veiculo>
+  @hasMany(() => Veiculo)
+  public Veiculos: HasMany<typeof Veiculo>
 }
