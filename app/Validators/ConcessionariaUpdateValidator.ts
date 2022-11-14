@@ -6,11 +6,11 @@ export default class ConcessionariaUpdateValidator {
 
   public schema = schema.create({
     cnpj: schema.string.optional([
-      rules.maxLength(14),
-      rules.unique({ table: 'concessionaria', column: 'cnpj' }),
+      rules.maxLength(18),
+      rules.unique({ table: 'concessionarias', column: 'cnpj' }),
     ]),
     endereco: schema.string.optional([rules.maxLength(100)]),
-    numero: schema.number.optional([rules.unique({ table: 'concessionaria', column: 'numero' })]),
+    numero: schema.number.optional(),
     complemento: schema.string.optional([]),
     bairro: schema.string.optional([rules.maxLength(100)]),
     cidade: schema.string.optional([rules.maxLength(50)]),

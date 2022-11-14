@@ -25,7 +25,8 @@ export default class ConcessionariasController {
   async destroy({ request }) {
     const id = await request.param('id')
     const concessionaria = await Concessionaria.findOrFail(id)
-    return concessionaria.delete()
+    concessionaria.delete()
+    return 'Concessionaria deletada com sucesso!'
   }
 
   async update({ request }) {

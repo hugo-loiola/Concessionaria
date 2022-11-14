@@ -22,7 +22,8 @@ export default class FuncionariosController {
     const id = request.param('id')
     const funcionario = await Funcionario.findOrFail(id)
 
-    return await funcionario.delete()
+    await funcionario.delete()
+    return 'Funcionario deletado com sucesso!'
   }
   // Alterar um funcionario existente
   async update({ request }) {

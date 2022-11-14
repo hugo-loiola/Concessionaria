@@ -12,13 +12,14 @@ export default class VeiculoUpdateValidator {
     marcaId: schema.number.optional([rules.exists({ table: 'marcas', column: 'id' })]),
     vendaId: schema.number.optional([rules.exists({ table: 'vendas', column: 'id' })]),
     modelo: schema.string.optional([rules.maxLength(50)]),
-    ano: schema.number.optional([rules.maxLength(4)]),
+    ano: schema.number.optional(),
+    preco: schema.number.optional(),
     cor: schema.string.optional([rules.maxLength(100)]),
-    combustivel: schema.string.optional([rules.alpha(), rules.maxLength(100)]),
+    combustivel: schema.string.optional([rules.alpha()]),
     qtdPassageiros: schema.number.optional(),
     cambio: schema.string.optional([rules.maxLength(50)]),
     cilindrada: schema.number.optional(),
-    potencia: schema.number.optional([rules.maxLength(100)]),
+    potencia: schema.number.optional(),
   })
 
   public messages: CustomMessages = {}

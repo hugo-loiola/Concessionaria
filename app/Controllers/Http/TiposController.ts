@@ -19,7 +19,8 @@ export default class TiposController {
   async destroy({ request }) {
     const id = await request.param('id')
     const tipo = await Tipo.findOrFail(id)
-    return tipo.delete()
+    tipo.delete()
+    return 'Tipo deletado com sucesso!'
   }
 
   async update({ request }) {

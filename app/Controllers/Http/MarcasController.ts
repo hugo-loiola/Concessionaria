@@ -19,7 +19,8 @@ export default class MarcasController {
   async destroy({ request }) {
     const id = await request.param('id')
     const marca = await Marca.findOrFail(id)
-    return marca.delete()
+    marca.delete()
+    return 'Marca deletada com sucesso!'
   }
 
   async update({ request }) {

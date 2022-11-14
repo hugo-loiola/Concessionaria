@@ -27,7 +27,6 @@ export default class extends BaseSchema {
       table.string('cidade', 50)
       table.string('uf', 2)
       table.string('cep', 7)
-      table.integer('qtd_vendas').notNullable()
 
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
