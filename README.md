@@ -1,5 +1,13 @@
 # Concessionária
 
+### Contribuidores
+
+<a href="https://github.com/hugo-loiola/Concessionaria/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=hugo-loiola/Concessionaria" />
+</a>
+
+Made with [contrib.rocks](https://contrib.rocks).
+
 
 ### Iniciar um projeto.
 
